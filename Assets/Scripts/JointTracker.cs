@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class JointTracker : MonoBehaviour
 {
     // List of all of the DH parameters we can control
-    static public List<float> a     = new List<float>();
-    static public List<float> alpha = new List<float>();
-    static public List<float> d     = new List<float>();
-    static public List<float> theta = new List<float>();
+    static public List<double> a     = new List<double>(){0.0};
+    static public List<double> alpha = new List<double>(){0.0};
+    static public List<double> d     = new List<double>(){0.0};
+    static public List<double> theta = new List<double>(){0.0};
 
     public GameObject FramePrefab;
     public GameObject GuiPrefab;
@@ -24,11 +25,18 @@ public class JointTracker : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    }
+
+    public void RunDynamics(){
+        DynamicsClientHandler.RunDynamics(a,alpha,d,theta);
+    }
+
+    public void StartClient(){
+        DynamicsClientHandler.SpawnClient();
     }
 
     public void AddJoint(){
-        var CanvasObject = GameObject.Find("Canvas");
+        var CanvasObject = GameObject.Find("UI");
         var FrameObject  = GameObject.Find("Frame" + num_joints.ToString());
 
         GameObject NewFrame = Instantiate(FramePrefab, new Vector3(0, 0, 0), Quaternion.identity);
@@ -48,7 +56,7 @@ public class JointTracker : MonoBehaviour
         NewFrame.transform.name = "Frame" +  num_joints.ToString();
         NewGui.transform.name = "Joint" +  num_joints.ToString();
 
-        NewGui.transform.Find("Text").Find("JointName").GetComponent<Text>().text = "Joint " + num_joints.ToString() + ":";
+        NewGui.transform.Find("Text").Find("JointName").GetComponent<TextMeshProUGUI>().text = "Joint " + num_joints.ToString() + ":";
 
         // update the DH parameters by adding another list entry
         a.Add(0);

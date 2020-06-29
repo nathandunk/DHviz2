@@ -6,17 +6,17 @@ using UnityEngine.EventSystems;
 public class MouseOrbit : MonoBehaviour {
  
     public Transform target;
-    public float distance = 5.0f;
+    public float distance = 15.0f;
     public float xSpeed = 20.0f;
-    public float ySpeed = 20.0f;
+    public float ySpeed = 100.0f;
  
     public float yMinLimit = -20f;
     public float yMaxLimit = 90f;
  
-    public float distanceMin = .5f;
-    public float distanceMax = 15f;
+    public float distanceMin = .001f;
+    public float distanceMax = 50f;
  
-    private Rigidbody rigidbody;
+    new private Rigidbody rigidbody;
  
     float x = 0.0f;
     float y = 0.0f;
@@ -41,7 +41,7 @@ public class MouseOrbit : MonoBehaviour {
     {
         if (Input.GetMouseButton(0) && EventSystem.current.currentSelectedGameObject == null) 
         {
-            x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f;
+            x += Input.GetAxis("Mouse X") * xSpeed * distance * 0.02f / CenterCamera.scale;
             y -= Input.GetAxis("Mouse Y") * ySpeed * 0.02f;
         }
  

@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using UnityEngine.UI;
 using System.Globalization;
+using TMPro;
 
 public class ConnectSliderText : MonoBehaviour
 {
@@ -37,7 +38,7 @@ public class ConnectSliderText : MonoBehaviour
         string slider_name = gameObject.transform.name;
         string text_name = slider_name + "_input";
 
-        InputField text_object = gameObject.transform.parent.Find(text_name).GetComponent<InputField>();
+        TMP_InputField text_object = gameObject.transform.parent.Find(text_name).GetComponent<TMP_InputField>();
         if (!String.Equals(value_string,text_object.text)){
             text_object.text = value_string;
         }
