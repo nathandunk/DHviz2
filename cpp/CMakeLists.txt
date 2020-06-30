@@ -24,6 +24,6 @@ target_link_libraries(dynamic_model mahi::robo)
 # target_link_libraries(dynamic_model_exe mahi::robo)
 
 # add_custom_command(TARGET robot_sim POST_BUILD 
-            #    COMMAND ${CMAKE_COMMAND} -E copy_if_different
-            #    $<TARGET_FILE:robot_sim>              
-            #    "${PROJECT_SOURCE_DIR}/../unity/RobotSim/Build/RobotSim_Data/Plugins/")
+#                COMMAND ${CMAKE_COMMAND} -E copy_if_different
+#                $<TARGET_FILE:robot_sim>              
+#                "${PROJECT_SOURCE_DIR}/..")

@@ -43,6 +43,7 @@ public class CenterCamera : MonoBehaviour
     }
 
     public void scale_camera(float value){
-        scale = scale_factor*(value/500);
+        scale = scale_factor*Mathf.Log(value/500);
+        // Debug.Log(scale);
     }
 }

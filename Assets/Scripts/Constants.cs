@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Constants : MonoBehaviour
 {
-    static public float scale_factor = 100;
+    static public float scale_factor = 1000;
     // Start is called before the first frame update
     void Start()
     {

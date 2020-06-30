@@ -282,9 +282,9 @@ class RunDynamics(unity_client.UnityClientService):
 
         WriteFiles(M,V,G)
         write_params(len(theta)-1)
-        print("Dynamics have been written to file!")
+        print("Dynamics have been written to file.")
+        print("Running cmake.")
         os.chdir('cpp/build')
-        os.system('ls')
         os.system('cmake .. -G "Visual Studio 16 2019" -A x64')
         os.system('cmake --build . --config Release')
 

@@ -61,7 +61,9 @@ public class SliderScript : MonoBehaviour
                 break;
         }
 
-        frame.transform.localPosition = new Vector3(a,d,0);
+        Vector3 test_axis = new Vector3(0,d,0);
+        frame.transform.localPosition = new Vector3(a,0,0) + Quaternion.AngleAxis(-alpha,Vector3.right)*test_axis;
+        
         frame.transform.localRotation = Quaternion.AngleAxis(-alpha,Vector3.right)*Quaternion.AngleAxis(-theta, Vector3.up);
     }
 }

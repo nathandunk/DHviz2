@@ -24,7 +24,7 @@ void sim(){
             {
                 std::mutex lock;
                 // model.m_s.Tau = Kp.asDiagonal()*(Qref-model.m_s.Q)-Kd.asDiagonal()*model.m_s.Qd;
-                model.m_s.Tau = VectorXd::Zero(3);
+                // model.m_s.Tau = VectorXd::Zero(3);
                 model.update(0.001);
             }
             t_last = t;
@@ -37,7 +37,6 @@ DLL_EXPORT void start(){
     model.zero();
     stop_ = false;
     sim_thread = std::thread(sim);
-    // std::cout << "here";
 }
 
 DLL_EXPORT void stop(){
