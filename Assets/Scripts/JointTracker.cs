@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
@@ -32,12 +33,21 @@ public class JointTracker : MonoBehaviour
     }
 
     public void RunDynamics(){
-        DynamicsClientHandler.RunDynamics(a,alpha,d,theta);
+        // DynamicsClientHandler.RunDynamics(a,alpha,d,theta);
+        string aString     = string.Join( ",", a);
+        string alphaString = string.Join( ",", alpha);
+        string dString     = string.Join( ",", d);
+        string thetaString = string.Join( ",", theta);
+        string all_params = aString + " " + alphaString + " " + dString + " " + thetaString;
+        Process foo = new Process();
+        foo.StartInfo.FileName = "python_dh_dynamics.exe";
+        foo.StartInfo.Arguments = all_params;
+        foo.Start();
     }
 
-    public void StartClient(){
-        DynamicsClientHandler.SpawnClient();
-    }
+    // public void StartClient(){
+    //     DynamicsClientHandler.SpawnClient();
+    // }
 
     public void AddJoint(){
         // var CanvasObject   = GameObject.Find("UI");
