@@ -67,7 +67,9 @@ public class JointTracker : MonoBehaviour
 
         // NewGui.transform.localPosition = new Vector3(200, -100 - num_joints*150, 0);
         guiRT.anchoredPosition = new Vector3(200, -100 - (num_joints)*150, 0);
+        guiRT.localScale = new Vector3(1,1,1);
         controlRT.anchoredPosition = new Vector3(110, -55 - (num_joints-1)*50, 0);
+        controlRT.localScale = new Vector3(1,1,1);
 
         NewFrame.transform.localPosition = new Vector3(0, 0, 0);
         NewFrame.transform.localRotation = Quaternion.identity;
